@@ -1,1 +1,1 @@
-instagram-private-api==1.5.7
+git+https://github.com/ping/instagram_private_api.git

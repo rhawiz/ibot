@@ -1,5 +1,6 @@
 import json
 import random
+import sys
 from time import sleep
 
 from instagram_private_api import Client, ClientCompatPatch
@@ -81,8 +82,12 @@ def unfollow(api, max=None):
 
 
 def main():
-    user_name = input("Username:")
-    password = input("Password:")
+    if len(sys.argv) >= 3:
+        user_name = sys.argv[1]
+        password = sys.argv[2]
+    else:
+        user_name = input("Username:")
+        password = input("Password:")
 
     api = Client(user_name, password)
 
