@@ -102,21 +102,29 @@ def main():
     if len(sys.argv) >= 3:
         user_name = sys.argv[1]
         password = sys.argv[2]
+        wait_before_start = None
         interval = None
         action_interval = None
         rate = None
         if len(sys.argv) == 4:
-            interval = int(sys.argv[3])
+            wait_before_start = int(sys.argv[3])
         if len(sys.argv) == 5:
-            action_interval = int(sys.argv[4])
+            interval = int(sys.argv[4])
         if len(sys.argv) == 6:
-            rate = int(sys.argv[5])
+            action_interval = int(sys.argv[5])
+        if len(sys.argv) == 7:
+            rate = int(sys.argv[6])
+
     else:
         user_name = input("Username:")
         password = input("Password:")
+        wait_before_start = int(input("Time to wait before starting bot in seconds:"))
         interval = int(input("Interval in seconds (wait time between 40 requests):"))
         action_interval = int(input("Action Interval (wait time between each request):"))
         rate = int(input("Rate (amount of requests between each interval):"))
+
+    print(">> Bot started. Waiting {} seconds before starting.".format(wait_before_start))
+    sleep(wait_before_start)
 
     api = Client(user_name, password)
     print(">> Logged in with user '{}'".format(user_name))
