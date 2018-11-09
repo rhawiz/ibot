@@ -138,6 +138,8 @@ def main():
     sleep(wait_before_start)
 
     api = Client(user_name, password)
+
+
     print(">> Logged in with user '{}'".format(user_name))
 
     f1 = unfollow if unfollow_first else follow
